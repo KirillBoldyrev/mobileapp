@@ -144,6 +144,9 @@ understand and agree to Toggl\'s</string>
     <string name="Skip">Skip</string>
     <string name="SelectCalendars">Select calendars</string>
     <string name="SelectCalendarsMessage">Choose the calendars containing events you’d like to log in Toggl</string>
+    <string name="NoWorries">No worries</string>
+    <string name="CalendarPermissionDeniedMessage">Toggl needs access to your calendar to display events. You can enable this later.</string>
+    <string name="AllowAccess">Allow access</string>
 
     <string name="ReportsCalendarShortcutsTemplateSelector" translatable="false">Toggl.Giskard.TemplateSelectors.ReportsCalendarShortcutsTemplateSelector, Toggl.Giskard</string>
     <string name="ReportsCalendarTemplateSelector" translatable="false">Toggl.Giskard.TemplateSelectors.ReportsCalendarTemplateSelector, Toggl.Giskard</string>
