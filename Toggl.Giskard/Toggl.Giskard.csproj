@@ -634,6 +634,10 @@
     </Compile>
     <Compile Include="Extensions\Reactive\BottomNavigationViewExtensions.cs" />
     <Compile Include="Extensions\FragmentManagerExtensions.cs" />
+    <Compile Include="Fragments\CalendarPermissionDeniedFragment.cs" />
+    <Compile Include="Fragments\CalendarPermissionDeniedFragment.ViewBinds.cs">
+      <DependentUpon>CalendarPermissionDeniedFragment.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -1064,6 +1068,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\calendar_onboarding.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\calendar_onboarding.png" />    
     <AndroidResource Include="Resources\drawable\BlueButton.axml" />
+    <AndroidResource Include="Resources\layout\CalendarPermissionDeniedFragment.axml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Toggl.Foundation\Toggl.Foundation.csproj">
