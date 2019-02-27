@@ -356,6 +356,7 @@
     <Compile Include="Activities\SelectProjectActivity.cs" />
     <Compile Include="Adapters\SelectProjectRecyclerAdapter.cs" />
     <Compile Include="Bindings\TextInputLayoutErrorTextTargetBinding.cs" />
+    <Compile Include="BroadcastReceivers\SmartAlertCalendarEventBroadcastReceiver.cs" />
     <Compile Include="BroadcastReceivers\TimezoneChangedBroadcastReceiver.cs" />
     <Compile Include="Extensions\ContextExtensions.cs" />
     <Compile Include="Extensions\DrawableExtensions.cs" />
