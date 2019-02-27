@@ -4,10 +4,14 @@ using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using Android.App;
+using Android.Content;
+using Android.OS;
 using Android.Support.V4.App;
 using Toggl.Foundation.Services;
+using Toggl.Giskard.BroadcastReceivers;
 using Toggl.Giskard.Extensions;
 using Toggl.Multivac.Extensions;
+using Notification = Android.App.Notification;
 
 namespace Toggl.Giskard.Services
 {
@@ -26,15 +30,16 @@ namespace Toggl.Giskard.Services
 
                     notifications.Select(notification =>
                         (
-                            notification.Id.GetHashCode(), // this is a temp measure, might be better to change this in the future
-                            notificationsBuilder.SetAutoCancel(true)
+                            notificationId: notification.Id.GetHashCode(), // this is a temp measure, might be better to change this in the future
+                            androidNofitication: notificationsBuilder.SetAutoCancel(true)
                                 .SetContentIntent(pendingIntent)
                                 .SetContentTitle(notification.Title)
                                 .SetSmallIcon(Resource.Drawable.ic_icon_running)
                                 .SetContentText(notification.Description)
-                                .Build()
+                                .Build(),
+                            scheduleAt: notification.ScheduledTime
                         )
-                    ).ForEach(notificationManager.Notify);
+                    ).ForEach(notificationInfo => scheduleNotification(notificationInfo.notificationId, notificationInfo.androidNofitication, notificationInfo.scheduleAt));
                 });
 
         public IObservable<Unit> UnscheduleAllNotifications()
@@ -44,5 +49,17 @@ namespace Toggl.Giskard.Services
                     var notificationManager = NotificationManagerCompat.From(context);
                     notificationManager.CancelAll();
                 });
+
+        public static void scheduleNotification(int notificationId, Notification notification, DateTimeOffset scheduleAt)
+        {
+            var scheduledNotificationIntent = new Intent(Application.Context, typeof(SmartAlertCalendarEventBroadcastReceiver));
+            scheduledNotificationIntent.PutExtra(SmartAlertCalendarEventBroadcastReceiver.NotificationId, notificationId);
+            scheduledNotificationIntent.PutExtra(SmartAlertCalendarEventBroadcastReceiver.Notification, notification);
+            var pendingIntent = PendingIntent.GetBroadcast(Application.Context, notificationId, scheduledNotificationIntent, PendingIntentFlags.CancelCurrent);
+
+            var futureInMillis = (long) (scheduleAt - DateTimeOffset.Now).TotalMilliseconds;
+            var alarmManager = (AlarmManager) Application.Context.GetSystemService(Context.AlarmService);
+            alarmManager.SetExact(AlarmType.ElapsedRealtimeWakeup, SystemClock.ElapsedRealtime() + futureInMillis, pendingIntent);
+        }
     }
 }
