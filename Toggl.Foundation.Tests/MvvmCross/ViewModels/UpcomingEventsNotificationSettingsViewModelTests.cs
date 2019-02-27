@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NSubstitute;
+using Toggl.Foundation.MvvmCross.ViewModels.Selectable;
 using Toggl.Foundation.MvvmCross.ViewModels.Settings;
 using Toggl.Foundation.Tests.Generators;
 using Toggl.Multivac;
@@ -52,7 +53,8 @@ namespace Toggl.Foundation.Tests.MvvmCross.ViewModels
             [InlineData(CalendarNotificationsOption.OneHour, true, 60)]
             public async Task SavesTheSelectedOption(CalendarNotificationsOption option, bool enabled, int minutes)
             {
-                ViewModel.SelectOption.Execute(option);
+                var selectableOption = new SelectableCalendarNotificationsOptionViewModel(option, false);
+                ViewModel.SelectOption.Execute(selectableOption);
 
                 TestScheduler.Start();
                 UserPreferences.Received().SetCalendarNotificationsEnabled(enabled);

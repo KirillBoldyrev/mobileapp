@@ -158,6 +158,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical" />
             </FrameLayout>
+            <View
+                android:background="@color/separator"
+                android:layout_height="0.5dp"
+                android:layout_width="match_parent" />
             <FrameLayout
                 android:id="@+id/SettingsDurationFormatView"
                 android:clickable="true"
@@ -269,6 +273,62 @@
                     android:layout_marginRight="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+            </FrameLayout>
+            <View
+                android:background="@color/separator"
+                android:layout_height="0.5dp"
+                android:layout_width="match_parent" />
+            <View
+                android:background="@color/separator"
+                android:layout_height="0.5dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="24dp"/>
+            <TextView
+                android:id="@+id/CalendarSettingsView"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"
+                android:text="@string/CalendarSettings"/>
+            <View
+                android:background="@color/separator"
+                android:layout_height="0.5dp"
+                android:layout_width="match_parent" />
+            <FrameLayout
+                android:id="@+id/SmartRemindersView"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground">
+                <TextView
+                    android:id="@+id/SmartRemindersTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="5sp"
+                    android:textColor="@android:color/black"
+                    tools:text="5 minutes before the event"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="9dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/defaultText"
+                    android:text="@string/SmartReminders"/>
+                <ImageView
+                    android:src="@drawable/dropdown"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical" />
             </FrameLayout>
             <View
                 android:background="@color/separator"

@@ -147,7 +147,11 @@ understand and agree to Toggl\'s</string>
     <string name="NoWorries">No worries</string>
     <string name="CalendarPermissionDeniedMessage">Toggl needs access to your calendar to display events. You can enable this later.</string>
     <string name="AllowAccess">Allow access</string>
-
+    <string name="SetSmartReminders">Set smart reminders</string>
+    <string name="SetSmartRemindersMessage">Get an actionable reminder to start tracking time for your event</string>
+    <string name="CalendarSettings">CalendarSettings</string>
+    <string name="SmartReminders">Smart reminders</string>
+    
     <string name="ReportsCalendarShortcutsTemplateSelector" translatable="false">Toggl.Giskard.TemplateSelectors.ReportsCalendarShortcutsTemplateSelector, Toggl.Giskard</string>
     <string name="ReportsCalendarTemplateSelector" translatable="false">Toggl.Giskard.TemplateSelectors.ReportsCalendarTemplateSelector, Toggl.Giskard</string>
     <string name="ReportsTemplateSelector" translatable="false">Toggl.Giskard.TemplateSelectors.ReportsTemplateSelector, Toggl.Giskard</string>

@@ -82,6 +82,10 @@ namespace Toggl.Giskard.Fragments
                 .Subscribe(durationFormatTextView.Rx().TextObserver())
                 .DisposedBy(DisposeBag);
 
+            ViewModel.CalendarSmartReminders
+                .Subscribe(smartRemindersTextView.Rx().TextObserver())
+                .DisposedBy(DisposeBag);
+
             ViewModel.UserAvatar
                 .Select(userImageFromBytes)
                 .Subscribe(bitmap =>
@@ -141,6 +145,10 @@ namespace Toggl.Giskard.Fragments
 
             durationFormatView.Rx().Tap()
                 .Subscribe(ViewModel.SelectDurationFormat.Inputs)
+                .DisposedBy(DisposeBag);
+
+            smartRemindersView.Rx().Tap()
+                .Subscribe(ViewModel.OpenCalendarSmartReminders.Inputs)
                 .DisposedBy(DisposeBag);
 
             return view;

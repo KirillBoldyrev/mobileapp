@@ -1,12 +1,13 @@
 ﻿using System;
 using Foundation;
 using Toggl.Foundation.Extensions;
+using Toggl.Foundation.MvvmCross.ViewModels.Selectable;
 using Toggl.Multivac;
 using UIKit;
 
 namespace Toggl.Daneel.Cells.Settings
 {
-    public sealed partial class UpcomingEventsOptionCell : BaseTableViewCell<CalendarNotificationsOption>
+    public sealed partial class UpcomingEventsOptionCell : BaseTableViewCell<SelectableCalendarNotificationsOptionViewModel>
     {
         public static readonly string Identifier = nameof(UpcomingEventsOptionCell);
         public static readonly NSString Key = new NSString(nameof(UpcomingEventsOptionCell));
@@ -27,15 +28,10 @@ namespace Toggl.Daneel.Cells.Settings
             SelectionStyle = UITableViewCellSelectionStyle.None;
         }
 
-        public override void SetSelected(bool selected, bool animated)
-        {
-            base.SetSelected(selected, animated);
-            SelectedImageView.Hidden = !selected;
-        }
-
         protected override void UpdateView()
         {
-            TitleLabel.Text = Item.Title();
+            SelectedImageView.Hidden = !Item.Selected;
+            TitleLabel.Text = Item.Option.Title();
         }
     }
 }

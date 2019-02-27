@@ -10,6 +10,7 @@ using Toggl.Daneel.ViewSources.Generic.TableView;
 using Toggl.Foundation;
 using Toggl.Foundation.MvvmCross.Extensions;
 using Toggl.Foundation.MvvmCross.ViewModels;
+using Toggl.Foundation.MvvmCross.ViewModels.Selectable;
 using Toggl.Foundation.MvvmCross.ViewModels.Settings;
 using Toggl.Multivac;
 using Toggl.Multivac.Extensions;
@@ -36,7 +37,7 @@ namespace Toggl.Daneel.ViewControllers.Settings
             TableView.RegisterNibForCellReuse(UpcomingEventsOptionCell.Nib, UpcomingEventsOptionCell.Identifier);
             TableView.RowHeight = rowHeight;
 
-            var source = new CustomTableViewSource<Unit, CalendarNotificationsOption>(
+            var source = new CustomTableViewSource<Unit, SelectableCalendarNotificationsOptionViewModel>(
                 UpcomingEventsOptionCell.CellConfiguration(UpcomingEventsOptionCell.Identifier),
                 ViewModel.AvailableOptions
             );
@@ -46,8 +47,6 @@ namespace Toggl.Daneel.ViewControllers.Settings
                 .DisposedBy(DisposeBag);
 
             TableView.Source = source;
-
-            TableView.SelectRow(NSIndexPath.FromRowSection(ViewModel.SelectedOptionIndex, 0), false, UITableViewScrollPosition.None);
 
             CloseButton.Rx()
                 .BindAction(ViewModel.Close)

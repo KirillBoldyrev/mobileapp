@@ -79,8 +79,10 @@ namespace Toggl.Foundation.MvvmCross.ViewModels
         public IObservable<bool> UseTwentyFourHourFormat { get; }
         public IObservable<IList<SelectableWorkspaceViewModel>> Workspaces { get; }
         public IObservable<bool> IsFeedbackSuccessViewShowing { get; }
+        public IObservable<string> CalendarSmartReminders { get; }
 
         public UIAction OpenCalendarSettings { get; }
+        public UIAction OpenCalendarSmartReminders { get; }
         public UIAction OpenNotificationSettings { get; }
         public UIAction ToggleTwentyFourHourSettings { get; }
         public UIAction OpenHelpView { get; }
@@ -191,6 +193,10 @@ namespace Toggl.Foundation.MvvmCross.ViewModels
                     .Select(preferences => preferences.TimeOfDayFormat.IsTwentyFourHoursFormat)
                     .DistinctUntilChanged();
 
+            CalendarSmartReminders = userPreferences.CalendarNotificationsSettings()
+                .Select(s => s.Title())
+                .DistinctUntilChanged();
+
             UserAvatar =
                 dataSource.User.Current
                     .Select(user => user.ImageUrl)
@@ -223,6 +229,7 @@ namespace Toggl.Foundation.MvvmCross.ViewModels
             IsFeedbackSuccessViewShowing = isFeedbackSuccessViewShowing.AsObservable();
 
             OpenCalendarSettings = rxActionFactory.FromAsync(openCalendarSettings);
+            OpenCalendarSmartReminders = rxActionFactory.FromAsync(openCalendarSmartReminders);
             OpenNotificationSettings = rxActionFactory.FromAsync(openNotificationSettings);
             ToggleTwentyFourHourSettings = rxActionFactory.FromAsync(toggleUseTwentyFourHourClock);
             OpenHelpView = rxActionFactory.FromAsync(openHelpView);
@@ -294,6 +301,9 @@ namespace Toggl.Foundation.MvvmCross.ViewModels
 
         private Task openCalendarSettings()
             => navigationService.Navigate<CalendarSettingsViewModel>();
+
+        private Task openCalendarSmartReminders()
+            => navigationService.Navigate<UpcomingEventsNotificationSettingsViewModel, Unit>();
 
         private Task openNotificationSettings()
             => navigationService.Navigate<NotificationSettingsViewModel>();

@@ -20,6 +20,8 @@ namespace Toggl.Giskard.Fragments
         private View dateFormatView;
         private View beginningOfWeekView;
         private View durationFormatView;
+        private View calendarSettingsView;
+        private View smartRemindersView;
 
         private TextView nameTextView;
         private TextView emailTextView;
@@ -27,6 +29,7 @@ namespace Toggl.Giskard.Fragments
         private TextView dateFormatTextView;
         private TextView beginningOfWeekTextView;
         private TextView durationFormatTextView;
+        private TextView smartRemindersTextView;
 
         private ImageView avatarView;
 
@@ -50,6 +53,8 @@ namespace Toggl.Giskard.Fragments
             dateFormatView = fragmentView.FindViewById(Resource.Id.SettingsDateFormatView);
             beginningOfWeekView = fragmentView.FindViewById(Resource.Id.SettingsSelectBeginningOfWeekView);
             durationFormatView = fragmentView.FindViewById(Resource.Id.SettingsDurationFormatView);
+            calendarSettingsView = fragmentView.FindViewById(Resource.Id.CalendarSettingsView);
+            smartRemindersView = fragmentView.FindViewById(Resource.Id.SmartRemindersView);
             runningTimerNotificationsView = fragmentView.FindViewById(Resource.Id.SettingsRunningTimerNotificationsView);
             stoppedTimerNotificationsView = fragmentView.FindViewById(Resource.Id.SettingsStoppedTimerNotificationsView);
 
@@ -59,6 +64,7 @@ namespace Toggl.Giskard.Fragments
             dateFormatTextView = fragmentView.FindViewById<TextView>(Resource.Id.SettingsDateFormatTextView);
             beginningOfWeekTextView = fragmentView.FindViewById<TextView>(Resource.Id.SettingsBeginningOfWeekTextView);
             durationFormatTextView = fragmentView.FindViewById<TextView>(Resource.Id.SettingsDurationFormatTextView);
+            smartRemindersTextView = fragmentView.FindViewById<TextView>(Resource.Id.SmartRemindersTextView);
 
             avatarView = fragmentView.FindViewById<ImageView>(Resource.Id.SettingsViewAvatarImage);
             manualModeSwitch = fragmentView.FindViewById<Switch>(Resource.Id.SettingsIsManualModeEnabledSwitch);

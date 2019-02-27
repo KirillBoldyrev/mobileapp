@@ -638,6 +638,12 @@
     <Compile Include="Fragments\CalendarPermissionDeniedFragment.ViewBinds.cs">
       <DependentUpon>CalendarPermissionDeniedFragment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fragments\UpcomingEventsNotificationSettingsFragment.cs" />
+    <Compile Include="Fragments\UpcomingEventsNotificationSettingsFragment.ViewBinds.cs">
+      <DependentUpon>UpcomingEventsNotificationSettingsFragment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\SelectCalendarNotificationsOptionAdapter.cs" />
+    <Compile Include="ViewHolders\SelectCalendarNotificationsOptionViewHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -1069,6 +1075,8 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\calendar_onboarding.png" />    
     <AndroidResource Include="Resources\drawable\BlueButton.axml" />
     <AndroidResource Include="Resources\layout\CalendarPermissionDeniedFragment.axml" />
+    <AndroidResource Include="Resources\layout\UpcomingEventsNotificationSettingsFragment.axml" />
+    <AndroidResource Include="Resources\layout\SelectCalendarNotificationsOptionItem.axml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Toggl.Foundation\Toggl.Foundation.csproj">
